@@ -1,0 +1,9 @@
+body {
+    background-color: yellow;
+}
+
+#searchbar {
+    width: 900px;
+    top: 200px;
+    background-color: yellow;
+}

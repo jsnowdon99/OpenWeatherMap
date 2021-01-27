@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url("https://i.redd.it/eefnls9gw8c51.png");
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+        
+            /* submit form */
+        form {
+            background-color: #4654e1;
+            width: 50%;
+            height: 44px;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            position: relative;
+            top: 55%;
+            left: 25%;
+            }
+        input {
+            all: unset;
+            font: 16px system-ui;
+            color: #fff;
+            height: 100%;
+            width: 100%;
+            padding: 6px 10px;
+            }
+        ::placeholder {
+            color: #fff;
+            opacity: 0.7; 
+            }
+
+        #weatherClear {
+            position: relative;
+            cursor: pointer;
+            width: 100px;
+            height: 20px;
+            background-color: rgb(41, 195, 223);
+            padding-right: 10px;
+            transition-duration: 0.4s;
+            right:3px;
+        }
+        /* .delete {
+            left: 50%;
+            align-items: center;
+        } */
+           
+        #weatherSubmit {
+            position: relative;
+            cursor: pointer;
+            width: 100px;
+            height: 20px;
+            background-color: rgb(41, 195, 223);
+            padding-right: 10px;
+            right: 7px;
+            transition-duration: 0.4s;
+            }
+
+        #weatherSubmit:hover {
+            background-color: #3700ff; /* Green */
+            color: white;
+            }
+            
+        
+        #location {
+            padding-top: 5%;
+            text-align: center;
+        }
+
+        .card {
+            /* background-image: url("https://i.imgur.com/dpqZJV5.jpg");
+            background-size: cover; */
+            width: 18%;
+            height: 300px;
+            border-radius: 20px;
+            box-shadow: 0px 8px 16px 4px #21e2e9;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            margin-left: 6%;
+            color: rgb(14, 0, 0);
+            background-color: rgba(188, 227, 245, 0.7);
+        }
+        .card:hover {
+            background-color: rgba(254, 255, 255, 0.7);
+        }
+        .cloud_card {
+            background-image: url("https://www.revelstokereview.com/wp-content/uploads/2019/07/17905924_web1_190731-ok-shu-weather-tues.jpg");
+            background-size: cover;
+            width: 25%;
+            height: 300px;
+            border-radius: 20px;
+            box-shadow: 0px 8px 16px 4px #21e2e9;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            margin-left: 6%;
+            color: white;
+        }
+
+        .clear_card {
+            background-image: url("https://torange.biz/photo/20/HD/sky-blue-clear-20213.jpg");
+            background-size: cover;
+            width: 25%;
+            height: 300px;
+            border-radius: 20px;
+            box-shadow: 0px 8px 16px 4px #21e2e9;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            margin-left: 6%;
+            color: white;
+        }
+
+        .error {
+            text-align: center;
+            font-size: x-large;
+            font-weight: bold;
+        }
+        .time-font {
+            font-size: 50px;
+
+        }
+
+        .sm-font {
+            font-size: 18px;
+        }
+
+        .med-font {
+            font-size: 28px;
+        }
+
+        .large-font {
+            font-size: 60px;
+        }
+
+        .repeat {
+            text-align: center;
+            font-size: large;
+            padding-bottom: 10px;
+            color: wheat;
+        }
+        .repeat2 {
+            text-align: center;
+            font-size: large;
+            padding-bottom: 10px;
+            color: wheat;
+        }
+
+        .container_clear {
+            position: relative;
+            padding-top: 20%;
+        }
+    </style>
+    <title>Weather for {{city}} </title>
+</head>
+<body>
+
+
+    {% for cities_row in cities  | batch(4) %}
+    <div class="row">
+    {% for city in cities_row %}
+
+    <div class="card">
+        
+        <div class="col">
+                {% if city %}
+                
+                {% if "clouds" in city[3] %}
+                <img src="https://cdn2.iconfinder.com/data/icons/weather-color-2/500/weather-02-512.png" alt="logo" style="width:100px;height:100px;">
+                {% elif "rain" in city[3] %}
+                <img src="https://cdn3.iconfinder.com/data/icons/tiny-weather-1/512/rain-cloud-128.png" alt="logo" style="width:100px;height:100px;">
+                
+                
+                {% elif "storm" in city[3] %}
+                <img src="https://cdn3.iconfinder.com/data/icons/tiny-weather-1/512/flash-cloud-256.png" alt="logo" style="width:100px;height:100px;">
+                {% elif "snow" in city[3] %}
+                <img src="https://cdn3.iconfinder.com/data/icons/tiny-weather-1/512/snow-cloud-256.png" alt="logo" style="width:100px;height:100px;">
+                {% elif "wind" in city[3] %}
+                <img src="https://cdn2.iconfinder.com/data/icons/weather-color-2/500/weather-26-256.png" alt="logo" style="width:100px;height:100px;">
+                {% elif "sun" or "clear" in city[3] %}
+                <img src="https://cdn2.iconfinder.com/data/icons/weather-color-2/500/weather-01-512.png" alt="logo" style="width:100px;height:100px;">
+                
+                
+                {% endif %}
+                <h2 class="ml-auto mr-4 mt-3 mb-0">{{city[0]}}, {{city[4]}}</h2>
+                <p class="ml-auto mr-4 mb-0 med-font">{{city[3]}}</p>
+                <h1 class="ml-auto mr-4 large-font">{{ city[1] }}&#176;</h1>
+                {% endif %} 
+        </div> 
+    </div> 
+        
+    {% endfor %}
+    </div>
+    {% endfor %}
+
+    {% if error %}
+    <p class="error"> Please enter a valid city</p>
+    {% endif %}
+
+
+    {% if no_repeat %}
+    <div class="repeat" {{no_repeat}}> </div>
+    {% elif repeat %}
+    <div class="repeat2" {{repeat}}> </div>
+    {% endif %}
+
+    {% if clear %}
+    <div class = "container_clear">
+        <form action="http://localhost:5000/city" method="post">
+        <input id="searchbar" autocomplete="off"
+        type="text" placeholder="Search for another city..." name="cityname">
+        <input id="weatherSubmit" type="submit" value="Search">
+        <input id="weatherClear" name="delete" type="submit" value="Clear All">
+        
+    </div>
+
+    {% else %}
+    <div class = "container">
+        <form action="http://localhost:5000/city" method="post">
+        <input id="searchbar" autocomplete="off"
+        type="text" placeholder="Search for another city..." name="cityname">
+        <input id="weatherSubmit" type="submit" value="Search">
+        <input id="weatherClear" name="delete" type="submit" value="Clear All">
+        
+    </div>
+    {% endif %}
+    
+</body>
+</html>

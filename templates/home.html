@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            background-image: url("https://i.redd.it/eefnls9gw8c51.png");
+            background-size: 100%;
+            background-repeat: no-repeat;
+
+        }
+        /* submit form */
+        form {
+            background-color: #4654e1;
+            width: 50%;
+            height: 44px;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            position: absolute;
+            top: 50%;
+            left: 25%;
+            }
+        input {
+            all: unset;
+            font: 16px system-ui;
+            color: #fff;
+            height: 100%;
+            width: 100%;
+            padding: 6px 10px;
+            }
+        ::placeholder {
+            color: #fff;
+            opacity: 0.7; 
+            }
+           
+        #weatherSubmit {
+            position: relative;
+            cursor: pointer;
+            width: 80px;
+            height: 20px;
+            background-color: rgb(41, 195, 223);
+            padding-right: 10px;
+            right: 5px;
+            transition-duration: 0.4s;
+            }
+
+        #weatherSubmit:hover {
+            background-color: #3700ff; /* Green */
+            color: white;
+            }
+            
+        /* title */
+        .title {
+            position: absolute;
+            top: 30%;
+            text-align: center;
+            width: 50%;
+            left: 25%;
+        }
+     
+    </style>
+
+    <title>OpenWeatherMap API</title>
+</head>
+<body>
+    <div class = "title">
+        <h1>OpenWeatherMap API Weather Search</h1>
+    </div>
+    <div class = "container">
+        <form action="http://localhost:5000/city" method="post">
+        <input id="searchbar" autocomplete="off"
+        type="text" placeholder="Search for a city..." name="cityname">
+        <input id="weatherSubmit" type="submit" value="Search">
+        
+    </div>
+</body>
+</html>
